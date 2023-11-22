@@ -69,4 +69,8 @@ public class TurnoEntradaDto {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
+
+    public Object getPacienteEntradaDto() {
+    return null;
+    }
 }

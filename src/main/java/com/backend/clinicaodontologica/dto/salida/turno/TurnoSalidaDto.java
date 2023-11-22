@@ -52,4 +52,7 @@ public class TurnoSalidaDto {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
+
+    public void setPacienteSalidaDto(Object o) {
+    }
 }
