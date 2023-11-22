@@ -78,4 +78,8 @@ public class TurnoModificacionEntradaDto {
     public Object getPacienteEntradaDto() {
         return null;
     }
+
+    public TurnoModificacionEntradaDto getOdontologoEntradaDto() {
+        return null;
+    }
 }

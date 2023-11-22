@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 
+
+
     //@Query(value = "SELECT * FROM PACIENTES WHERE DNI = ?1", nativeQuery = true)
     //@Query("SELECT Paciente p FROM Paciente WHERE p.dni = ?1")
-    Paciente findByDni(int dni);
+    static Paciente findByDni(int dni);
 }
