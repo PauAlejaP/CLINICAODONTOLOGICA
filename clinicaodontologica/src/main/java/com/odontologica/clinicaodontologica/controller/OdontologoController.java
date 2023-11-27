@@ -39,7 +39,7 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "Server error",
                     content = @Content)
     })
-    @PostMapping("registrar")
+    @PostMapping("/registrar")
 
     public ResponseEntity<OdontologoSalidaDto> registrarOdontologo(@Valid @RequestBody OdontologoEntradaDto odontologo) {
         return new ResponseEntity<>(odontologoService.registrarOdontologo(odontologo), HttpStatus.CREATED);
@@ -58,7 +58,7 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "UServer error",
                     content = @Content)
     })
-    @PutMapping("actualizar")
+    @PutMapping("/actualizar")
     public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@Valid @RequestBody OdontologoModificacionEntradaDto odontologo) throws ResourceNotFoundException {
         return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo), HttpStatus.OK);
     }
@@ -76,13 +76,13 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "Server error",
                     content = @Content)
     })
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<OdontologoSalidaDto> obtenerOdontologoPorId(@PathVariable Long id) {
         return new ResponseEntity<>(odontologoService.buscarOdontologoPorId(id), HttpStatus.OK);
     }
 
 
-    @GetMapping()
+    @GetMapping("/listar")
     @Operation(summary = "Listado de todos los odontólogos")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Listado de odontólogos obtenido correctamente",
@@ -110,7 +110,7 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "Server error",
                     content = @Content)
     })
-    @DeleteMapping("eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
         return new ResponseEntity<>("Odontologo eliminado correctamente", HttpStatus.NO_CONTENT);
