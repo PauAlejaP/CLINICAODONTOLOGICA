@@ -33,9 +33,9 @@ public class TurnoService implements ITurnoService {
         LOGGER.info("TurnoEntradaDto: " + JsonPrinter.toString(turno));
         Turno turnoEntidad = modelMapper.map(turno, Turno.class);
 
-        //mandamos a persistir a la capa dao y obtenemos una entidad
+
         Turno TurnoPersistir = turnoRepository.save(turnoEntidad);
-        //transformamos la entidad obtenida en salidaDto
+
         TurnoSalidaDto turnoSalidaDto = modelMapper.map(TurnoPersistir, TurnoSalidaDto.class);
         LOGGER.info("PacienteSalidaDto: " + JsonPrinter.toString(turnoSalidaDto));
         return turnoSalidaDto;
