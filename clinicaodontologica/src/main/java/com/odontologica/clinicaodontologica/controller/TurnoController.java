@@ -23,7 +23,7 @@ public class TurnoController {
     public ResponseEntity<TurnoSalidaDto> registrarTurno(@RequestBody @Valid TurnoEntradaDto turno) {
         return new ResponseEntity<>(turnoService.registrarTurno(turno), HttpStatus.CREATED);
     }
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<TurnoSalidaDto> buscarTurnoPorId(@PathVariable Long id) {
         return new ResponseEntity<>(turnoService.buscarTurnoPorId(id), HttpStatus.OK);
     }
