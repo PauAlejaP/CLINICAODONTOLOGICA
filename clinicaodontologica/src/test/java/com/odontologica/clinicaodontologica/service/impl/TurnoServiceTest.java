@@ -31,7 +31,7 @@ class TurnoServiceTest {
 
         TurnoSalidaDto turnoSalidaDto = turnoService.registrarTurno(turnoEntradaDto);
         assertNotNull(turnoSalidaDto.getPaciente());
-        assertEquals("Juan", turnoSalidaDto.getPaciente().getNombre());
+        assertEquals("Paula", turnoSalidaDto.getPaciente().getNombre());
     }
     @Test
     @Order(2)
