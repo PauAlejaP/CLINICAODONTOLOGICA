@@ -12,6 +12,7 @@ import java.util.List;
 import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/turnos")
+@CrossOrigin
 public class TurnoController {
     private ITurnoService turnoService;
 

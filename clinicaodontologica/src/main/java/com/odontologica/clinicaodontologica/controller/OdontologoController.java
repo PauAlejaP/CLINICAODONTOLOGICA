@@ -1,5 +1,6 @@
 package com.odontologica.clinicaodontologica.controller;
 
+
 import com.odontologica.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.odontologica.clinicaodontologica.dto.modificacion.OdontologoModificacionEntradaDto;
 import com.odontologica.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 import java.util.List;
+
 @RestController
 @RequestMapping("/odontologos")
+@CrossOrigin
 public class OdontologoController {
 
     private final OdontologoService odontologoService;
@@ -82,7 +85,7 @@ public class OdontologoController {
     }
 
 
-    @GetMapping("/listar")
+    @GetMapping()
     @Operation(summary = "Listado de todos los odontólogos")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Listado de odontólogos obtenido correctamente",
@@ -116,4 +119,3 @@ public class OdontologoController {
         return new ResponseEntity<>("Odontologo eliminado correctamente", HttpStatus.NO_CONTENT);
     }
 }
-

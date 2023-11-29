@@ -1,5 +1,6 @@
 package com.odontologica.clinicaodontologica.dto.entrada.turno;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.odontologica.clinicaodontologica.dto.entrada.odontologo.OdontologoEntradaDto;
 import com.odontologica.clinicaodontologica.dto.entrada.paciente.PacienteEntradaDto;
 import com.odontologica.clinicaodontologica.entity.Odontologo;
@@ -11,6 +12,7 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TurnoEntradaDto {
 
     @NotNull(message = "El campo fecha no puede ser nulo")
