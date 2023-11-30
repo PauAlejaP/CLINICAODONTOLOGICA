@@ -20,6 +20,7 @@ public class TurnoController {
         this.turnoService = turnoService;
     }
 
+
     @PostMapping("/registrar")
     public ResponseEntity<TurnoSalidaDto> registrarTurno(@Valid @RequestBody TurnoEntradaDto turno) {
         TurnoSalidaDto turnoSalida = turnoService.registrarTurno(turno);

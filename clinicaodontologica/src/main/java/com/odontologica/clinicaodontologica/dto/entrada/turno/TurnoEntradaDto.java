@@ -32,6 +32,10 @@ public class TurnoEntradaDto {
 
     }
 
+    public TurnoEntradaDto() {
+
+    }
+
     public TurnoEntradaDto(Long id, LocalDateTime fechayHora, Odontologo odontologo, Paciente paciente) {
 
         this.fechayHora = fechayHora;
@@ -69,3 +73,6 @@ public class TurnoEntradaDto {
         return null;
     }
 }
+
+
+
