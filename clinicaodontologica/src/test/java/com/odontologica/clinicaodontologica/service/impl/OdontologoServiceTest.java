@@ -58,5 +58,20 @@ class OdontologoServiceTest {
 
     }
 
+    @Test
+    @Order(1)
+    public void guardarOdontologo() {
+
+        OdontologoEntradaDto odontologoEntradaDto = new OdontologoEntradaDto();
+        odontologoEntradaDto.setMatricula("325");
+        odontologoEntradaDto.setNombre("Adolfo");
+        odontologoEntradaDto.setApellido("Guemes");
+
+        OdontologoSalidaDto odontologoGuardado = odontologoService.registrarOdontologo(odontologoEntradaDto);
+
+        assertNotNull(odontologoGuardado);
+        assertEquals(1L, odontologoGuardado.getId());
+}
+
 
 }

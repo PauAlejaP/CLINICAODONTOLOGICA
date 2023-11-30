@@ -5,21 +5,29 @@ import com.odontologica.clinicaodontologica.entity.Odontologo;
 import com.odontologica.clinicaodontologica.entity.Paciente;
 public class TurnoSalidaDto {
 
+    private Long id;
     private LocalDateTime fechaYHora;
-    private Odontologo odontologo;
-    private Paciente paciente;
+    private Long odontologo;
+    private Long paciente;
 
     public TurnoSalidaDto() {
 
     }
 
-    public TurnoSalidaDto(Long id, LocalDateTime fechaYHora, Odontologo odontologo, Paciente paciente) {
-
+    public TurnoSalidaDto(Long id, LocalDateTime fechaYHora, Long odontologo, Long paciente) {
+        this.id = id;
         this.fechaYHora = fechaYHora;
         this.odontologo = odontologo;
         this.paciente = paciente;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 
     public LocalDateTime getFechaYHora() {
@@ -30,19 +38,19 @@ public class TurnoSalidaDto {
         this.fechaYHora = fechaYHora;
     }
 
-    public Odontologo getOdontologo() {
+    public Long getOdontologo() {
         return odontologo;
     }
 
-    public void setOdontologo(Odontologo odontologo) {
+    public void setOdontologo(Long odontologo) {
         this.odontologo = odontologo;
     }
 
-    public Paciente getPaciente() {
+    public Long getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(Paciente paciente) {
+    public void setPaciente(Long paciente) {
         this.paciente = paciente;
     }
 

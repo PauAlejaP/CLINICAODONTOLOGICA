@@ -11,10 +11,10 @@ window.addEventListener('load', function () {
         event.preventDefault()
 
         const payload = {
-            fechaYHora: fechaYHora.value,
-            odontologo_id: odontologo_id.value,
-            paciente_id: paciente_id.value,
-        };
+            fechaYHora: fechaYHora.value.replace('T',' ')+":00",
+                        odontologo: odontologo.value,
+                        paciente: paciente.value,
+            };
 
         console.log(payload);
 
