@@ -1,11 +1,11 @@
 function deleteBy(id)
 {
 
-          const url = '/turno/'+ id;
+          const url = '/turnos'+ id;
           const settings = {
               method: 'DELETE'
           }
-          fetch(url,settings)
+          fetch(`${url}/turnos/eliminar/{id}`, settings)
           .then(response => response.json())
 
 

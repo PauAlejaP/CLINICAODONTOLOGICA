@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TurnoService implements ITurnoService {
@@ -45,7 +46,7 @@ public class TurnoService implements ITurnoService {
         List <TurnoSalidaDto> turnosSalidaDto = turnoRepository.findAll()
                 .stream()
                 .map(turno -> modelMapper.map(turno, TurnoSalidaDto.class))
-                .toList();
+                .collect(Collectors.toList());
 
         if (LOGGER.isInfoEnabled())
             LOGGER.info("Listado de todos los turnos: {}", JsonPrinter.toString(turnosSalidaDto));

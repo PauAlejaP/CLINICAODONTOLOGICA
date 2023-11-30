@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
         method: 'GET'
       }
 
-      fetch(url,settings)
+      fetch(`${url}/turnos/listar`,settings)
       .then(response => response.json())
       .then(data => {
 

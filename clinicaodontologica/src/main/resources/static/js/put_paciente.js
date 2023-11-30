@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
         };
 
 
-        const url = '/paciente';
+        const url = '/pacientes';
         const settings = {
             method: 'PUT',
             headers: {
@@ -41,11 +41,11 @@ window.addEventListener('load', function () {
 
 
     function findBy(id) {
-          const url = '/paciente'+"/"+id;
+          const url = '/pacientes'+"/"+id;
           const settings = {
               method: 'GET'
           }
-          fetch(url,settings)
+          fetch(`${url}/pacientes/actualizar`, settings)
           .then(response => response.json())
           .then(data => {
               let paciente = data;

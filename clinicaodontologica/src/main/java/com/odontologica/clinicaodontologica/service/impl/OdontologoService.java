@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OdontologoService implements IOdontologoService {
@@ -48,7 +49,7 @@ public class OdontologoService implements IOdontologoService {
 
     public List<OdontologoSalidaDto> listarOdontologos() {
         List<OdontologoSalidaDto> odontologos = odontologoRepository.findAll().stream()
-                .map(o -> modelMapper.map(o, OdontologoSalidaDto.class)).toList();
+                .map(o -> modelMapper.map(o, OdontologoSalidaDto.class)).collect(Collectors.toList());
 
         LOGGER.info("Listado de todos los odontologos: {}", odontologos);
 

@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
 
         };
 
-        const url = '/odontologo';
+        const url = '/odontologos';
         const settings = {
             method: 'PUT',
             headers: {
@@ -34,11 +34,11 @@ window.addEventListener('load', function () {
 
 
     function findBy(id) {
-          const url = '/odontologo'+"/"+id;
+          const url = '/odontologos'+"/"+id;
           const settings = {
               method: 'GET'
           }
-          fetch(url,settings)
+          fetch(`${url}/odontologos/actualizar`, settings)
           .then(response => response.json())
           .then(data => {
               let odontologo = data;

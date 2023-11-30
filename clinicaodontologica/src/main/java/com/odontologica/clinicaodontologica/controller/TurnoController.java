@@ -21,24 +21,31 @@ public class TurnoController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<TurnoSalidaDto> registrarTurno(@RequestBody @Valid TurnoEntradaDto turno) {
-        return new ResponseEntity<>(turnoService.registrarTurno(turno), HttpStatus.CREATED);
+    public ResponseEntity<TurnoSalidaDto> registrarTurno(@Valid @RequestBody TurnoEntradaDto turno) {
+        TurnoSalidaDto turnoSalida = turnoService.registrarTurno(turno);
+        return new ResponseEntity<>(turnoSalida, HttpStatus.CREATED);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<TurnoSalidaDto> buscarTurnoPorId(@PathVariable Long id) {
-        return new ResponseEntity<>(turnoService.buscarTurnoPorId(id), HttpStatus.OK);
+        TurnoSalidaDto turnoSalida = turnoService.buscarTurnoPorId(id);
+        return new ResponseEntity<>(turnoSalida, HttpStatus.OK);
     }
 
     @GetMapping("/listar")
     public ResponseEntity<List<TurnoSalidaDto>> listarTurnos() {
-        return new ResponseEntity<>(turnoService.listarTurnos(), HttpStatus.OK);
+        List<TurnoSalidaDto> listaTurnos = turnoService.listarTurnos();
+        return new ResponseEntity<>(listaTurnos, HttpStatus.OK);
     }
+
     @PutMapping("/actualizar")
     public ResponseEntity<TurnoSalidaDto> actualizarTurno(@RequestBody TurnoModificacionEntradaDto turno) {
-        return new ResponseEntity<>(turnoService.actualizarTurno(turno), HttpStatus.OK);
+        TurnoSalidaDto turnoSalida = turnoService.actualizarTurno(turno);
+        return new ResponseEntity<>(turnoSalida, HttpStatus.OK);
     }
-    @DeleteMapping("eliminar/{id}")
-    public ResponseEntity<?> eliminarTurno(@PathVariable Long id) {
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarTurno(@PathVariable Long id) {
         turnoService.eliminarTurno(id);
         return new ResponseEntity<>("Turno eliminado correctamente", HttpStatus.OK);
     }

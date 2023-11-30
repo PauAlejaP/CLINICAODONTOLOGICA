@@ -19,7 +19,7 @@ window.addEventListener('load', function () {
         };
 
 
-        const url = '/turno';
+        const url = '/turnos';
         const settings = {
             method: 'PUT',
             headers: {
@@ -35,11 +35,11 @@ window.addEventListener('load', function () {
 
 
     function findBy(id) {
-          const url = '/turno'+"/"+id;
+          const url = '/turnos'+"/"+id;
           const settings = {
               method: 'GET'
           }
-          fetch(url,settings)
+          fetch(`${url}/turnos/actualizar`, settings)
           .then(response => response.json())
           .then(data => {
               let paciente = data;

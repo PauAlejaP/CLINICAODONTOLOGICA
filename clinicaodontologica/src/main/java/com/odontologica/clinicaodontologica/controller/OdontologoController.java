@@ -42,11 +42,12 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "Server error",
                     content = @Content)
     })
-    @PostMapping("/registrar")
 
-    public ResponseEntity<OdontologoSalidaDto> registrarOdontologo(@Valid @RequestBody OdontologoEntradaDto odontologo) {
+    @PostMapping("/registrar")
+    public ResponseEntity<OdontologoSalidaDto> registrarOdontologo(@RequestBody OdontologoEntradaDto odontologo) {
         return new ResponseEntity<>(odontologoService.registrarOdontologo(odontologo), HttpStatus.CREATED);
     }
+
 
     //PUT
     @Operation(summary = "Actualización de un odontologo")
@@ -61,8 +62,10 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "UServer error",
                     content = @Content)
     })
+
     @PutMapping("/actualizar")
-    public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@Valid @RequestBody OdontologoModificacionEntradaDto odontologo) throws ResourceNotFoundException {
+    public ResponseEntity<OdontologoSalidaDto> actualizarOdontologo(@Valid @RequestBody OdontologoModificacionEntradaDto odontologo)
+            throws ResourceNotFoundException {
         return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo), HttpStatus.OK);
     }
 
@@ -85,7 +88,7 @@ public class OdontologoController {
     }
 
 
-    @GetMapping()
+
     @Operation(summary = "Listado de todos los odontólogos")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Listado de odontólogos obtenido correctamente",
@@ -96,9 +99,12 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "Server error",
                     content = @Content)
     })
+
+    @GetMapping("/listar")
     public ResponseEntity<List<OdontologoSalidaDto>> listarOdontologos() {
         return new ResponseEntity<>(odontologoService.listarOdontologos(), HttpStatus.OK);
     }
+
 
     //DELETE
     @Operation(summary = "Eliminación de un odontólogo por Id")
@@ -113,9 +119,10 @@ public class OdontologoController {
             @ApiResponse(responseCode = "500", description = "Server error",
                     content = @Content)
     })
+
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminarOdontologo(@PathVariable Long id) throws ResourceNotFoundException {
         odontologoService.eliminarOdontologo(id);
-        return new ResponseEntity<>("Odontologo eliminado correctamente", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("Odontólogo eliminado correctamente", HttpStatus.NO_CONTENT);
     }
 }
