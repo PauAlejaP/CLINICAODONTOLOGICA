@@ -20,47 +20,35 @@ import java.time.LocalDateTime;
 
 public class TurnoModificacionEntradaDto {
 
-    @NotNull(message = "El campo fecha no puede ser nulo")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
-    private LocalDateTime fechayHora;
-
-    @NotNull(message = "El odontologo no puede ser nulo")
-    @Valid
-    private Long odontologo;
-
+    @NotNull(message = "Debe proveerse el id del turno que se desea modificar")
+    private Long id;
     @NotNull(message = "El paciente no puede ser nulo")
-    @Valid
     private Long paciente;
 
+    @NotNull(message = "El odontologo no puede ser nulo")
+    private Long odontologo;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+    @FutureOrPresent(message = "La fecha no puede ser anterior al día de hoy")
+    @NotNull(message = "Debe especificarse la fecha y hora del turno")
+    private LocalDateTime fechaYHora;
+
     public TurnoModificacionEntradaDto() {
-
     }
 
-    public TurnoModificacionEntradaDto(Long id, LocalDateTime fechayHora, Long odontologo, Long paciente) {
-
-        this.fechayHora = fechayHora;
-        this.odontologo = odontologo;
+    public TurnoModificacionEntradaDto(Long id, Long paciente, Long odontologo, LocalDateTime fechaYHora) {
+        this.id = id;
         this.paciente = paciente;
-    }
-
-
-
-    public LocalDateTime getFechayHora() {
-        return fechayHora;
-    }
-
-    public void setFechayHora(LocalDateTime fechayHora) {
-        this.fechayHora = fechayHora;
-    }
-
-    public Long getOdontologo() {
-        return odontologo;
-    }
-
-    public void setOdontologo(Long odontologo) {
         this.odontologo = odontologo;
+        this.fechaYHora = fechaYHora;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getPaciente() {
@@ -71,11 +59,19 @@ public class TurnoModificacionEntradaDto {
         this.paciente = paciente;
     }
 
-    public Object getPacienteEntradaDto() {
-        return null;
+    public Long getOdontologo() {
+        return odontologo;
     }
 
-    public TurnoModificacionEntradaDto getOdontologoEntradaDto() {
-        return null;
+    public void setOdontologo(Long odontologo) {
+        this.odontologo = odontologo;
+    }
+
+    public LocalDateTime getFechaYHora() {
+        return fechaYHora;
+    }
+
+    public void setFechaYHora(LocalDateTime fechaYHora) {
+        this.fechaYHora = fechaYHora;
     }
 }

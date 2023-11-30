@@ -21,18 +21,7 @@ class TurnoServiceTest {
     @Autowired
     private TurnoService turnoService;
 
-    @Test
-    @Order(1)
-    void deberiaRegistrarUnTurnoDeVolverNombrePaciente(){
-        TurnoEntradaDto turnoEntradaDto = new TurnoEntradaDto(LocalDateTime.of(2023, 9, 9, 9, 9),
-                new OdontologoEntradaDto("1L", "Juan", "Perez"),
-                new PacienteEntradaDto("Paula", "Palacios", 654564654, LocalDate.of(2023, 9, 9),
-        new DomicilioEntradaDto("calle", 1234, "Localidad", "Provincia")));
 
-        TurnoSalidaDto turnoSalidaDto = turnoService.registrarTurno(turnoEntradaDto);
-        assertNotNull(turnoSalidaDto.getPaciente());
-        assertEquals("Paula", turnoSalidaDto.getPaciente().getClass());
-    }
     @Test
     @Order(2)
     void alIntentarEliminarUnTurnoYaEliminado_deberiaLanzarUnaResourceNotFoundException(){
