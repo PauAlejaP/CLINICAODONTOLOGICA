@@ -1,15 +1,20 @@
-function deleteBy(id)
-{
+function deleteBy(id) {
+    const url = `/turnos/eliminar/{id}`;
+    const settings = {
+        method: 'DELETE',
+    };
 
-          const url = '/turnos'+ id;
-          const settings = {
-              method: 'DELETE'
-          }
-          fetch(`${url}/turnos/eliminar/{id}`, settings)
-          .then(response => response.json())
+    fetch(url, settings)
+        .then(response => response.json())
+        .then(data => {
 
+            console.log(data);
+        })
+        .catch(error => {
 
-          let row_id = "#tr_" + id;
-          document.querySelector(row_id).remove();
+            console.error('Error:', error);
+        });
 
+    let row_id = "#tr_" + id;
+    document.querySelector(row_id).remove();
 }
