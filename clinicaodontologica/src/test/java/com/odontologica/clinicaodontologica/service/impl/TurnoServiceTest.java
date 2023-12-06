@@ -7,6 +7,7 @@ import com.odontologica.clinicaodontologica.dto.entrada.turno.TurnoEntradaDto;
 import com.odontologica.clinicaodontologica.dto.salida.odontologo.OdontologoSalidaDto;
 import com.odontologica.clinicaodontologica.dto.salida.paciente.PacienteSalidaDto;
 import com.odontologica.clinicaodontologica.dto.salida.turno.TurnoSalidaDto;
+import com.odontologica.clinicaodontologica.entity.Turno;
 import com.odontologica.clinicaodontologica.exception.BadRequestException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,8 +19,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import com.odontologica.clinicaodontologica.utils.LocalDateTimeAdapter;
+
 @SpringBootTest
 class TurnoServiceTest {
+
 
     @Autowired
     private TurnoService turnoService;
@@ -44,7 +47,11 @@ class TurnoServiceTest {
 
 
         TurnoEntradaDto turnoEntradaDto = new TurnoEntradaDto();
-        turnoEntradaDto.setFechaYHora(LocalDateTime.parse("2023-12-01 10:00:00"));
+        turnoEntradaDto.setPacienteId(pacienteGuardado.getId());
+        turnoEntradaDto.setOdontologoId(odontologoGuardado.getId());
+        LocalDateTime localDateTime = LocalDateTime.now();
+        String fechayHoraString = localDateTime.toString();
+        turnoEntradaDto.setFechaYHora(LocalDateTime.parse(fechayHoraString));
         turnoEntradaDto.setOdontologoId(odontologoGuardado.getId());
         turnoEntradaDto.setPacienteId(pacienteGuardado.getId());
 
