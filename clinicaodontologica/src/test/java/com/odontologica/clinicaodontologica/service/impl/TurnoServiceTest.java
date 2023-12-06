@@ -93,7 +93,7 @@ class TurnoServiceTest {
 
         // Register a turn
         TurnoEntradaDto turno1 = new TurnoEntradaDto();
-        turno1.setFechaYHora(LocalDateTime.parse("2023-12-01 10:00:00"));
+        turno1.setFechaYHora(LocalDateTime.parse("2023-12-0110 00:00"));
         turno1.setOdontologoId(1L);
         turno1.setPacienteId(1L);
         TurnoSalidaDto turnoGuardado = turnoService.registrarTurno(turno1);
