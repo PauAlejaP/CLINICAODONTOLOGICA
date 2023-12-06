@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PacienteService implements IPacienteService {
 
@@ -33,7 +35,7 @@ public class PacienteService implements IPacienteService {
 
     public PacienteSalidaDto registrarPaciente(PacienteEntradaDto paciente) {
         //convertimos mediante el mapper de dtoEntrada a entidad
-        LOGGER.info("PacienteEntradaDto: " + JsonPrinter.toString(paciente));
+        LOGGER.info("PacienteEntradaDto:" + JsonPrinter.toString(paciente));
         Paciente pacienteEntidad = modelMapper.map(paciente, Paciente.class);
 
         //mandamos a persistir a la capa dao y obtenemos una entidad
@@ -48,7 +50,7 @@ public class PacienteService implements IPacienteService {
         List<PacienteSalidaDto> pacientesSalidaDto = pacienteRepository.findAll()
                 .stream()
                 .map(paciente -> modelMapper.map(paciente, PacienteSalidaDto.class))
-                .toList();
+                .collect(Collectors.toList());
 
 
         if (LOGGER.isInfoEnabled())

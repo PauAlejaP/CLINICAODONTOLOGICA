@@ -13,11 +13,12 @@ import jakarta.validation.Valid;
 import java.util.List;
 @RestController
 @RequestMapping("/pacientes")
+@CrossOrigin
 public class PacienteController {
 
     private IPacienteService pacienteService;
 
-    public PacienteController(IPacienteService pacienteService) {
+    public PacienteController(IPacienteService pacienteService)  {
         this.pacienteService = pacienteService;
     }
 
@@ -29,7 +30,7 @@ public class PacienteController {
 
 
     //GET
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PacienteSalidaDto> obtenerPacientePorId(@PathVariable Long id) {
         return new ResponseEntity<>(pacienteService.buscarPacientePorId(id), HttpStatus.OK);
     }
@@ -46,7 +47,7 @@ public class PacienteController {
     }
 
     //DELETE
-    @DeleteMapping("eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         pacienteService.eliminarPaciente(id);
         return new ResponseEntity<>("Paciente eliminado correctamente", HttpStatus.OK);
