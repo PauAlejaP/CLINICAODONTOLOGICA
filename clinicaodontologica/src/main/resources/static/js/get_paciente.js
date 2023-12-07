@@ -1,19 +1,13 @@
 window.addEventListener('load', function () {
 
     const url = "http://localhost:8080";
-    
-    
-
-      
-      
       const settings = {
         method: 'GET'
       }
-
       fetch(`${url}/pacientes/listar`,settings)
       .then(response => response.json())
       .then(data => {
-        
+
         for(paciente of data){
 
             var table = document.getElementById("pacienteTable");

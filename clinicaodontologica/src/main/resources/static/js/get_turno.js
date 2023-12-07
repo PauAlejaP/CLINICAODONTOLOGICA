@@ -11,7 +11,9 @@ window.addEventListener('load', function () {
       .then(response => response.json())
       .then(data => {
 
-        for(turno of data){
+        for(const turno of data){
+
+            console.log(turno, data)
 
             var table = document.getElementById("turnoTable");
             var turnoRow = table.insertRow();
