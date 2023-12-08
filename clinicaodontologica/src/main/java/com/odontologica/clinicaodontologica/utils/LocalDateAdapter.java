@@ -18,7 +18,7 @@ public class LocalDateAdapter implements JsonSerializer<LocalDate>, JsonDeserial
     public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
             throws JsonParseException {
         return LocalDate.parse(json.getAsString(),
-                DateTimeFormatter.ofPattern("yyyy-MM-dd").withLocale(Locale.ENGLISH));
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withLocale(Locale.ENGLISH));
     }
 
 

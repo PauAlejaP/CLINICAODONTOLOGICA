@@ -1,7 +1,9 @@
 package com.odontologica.clinicaodontologica.exception;
 
 import com.odontologica.clinicaodontologica.dto.modificacion.TurnoModificacionEntradaDto;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -67,4 +69,6 @@ public class GlobalExceptionHandler {
 
         return exceptionMessage;
     }
+
+
 }

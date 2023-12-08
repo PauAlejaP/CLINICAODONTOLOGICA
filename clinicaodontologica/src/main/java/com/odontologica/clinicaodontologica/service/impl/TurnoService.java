@@ -23,7 +23,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class TurnoService implements ITurnoService {
+public class  TurnoService implements ITurnoService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(TurnoService.class);
     private final TurnoRepository turnoRepository;
@@ -41,38 +41,37 @@ public class TurnoService implements ITurnoService {
 
     }
 
+
     @Override
-    public TurnoSalidaDto registrarTurno(TurnoEntradaDto turnoEntradaDto) throws BadRequestException {
-        TurnoSalidaDto turnoSalidaDto;
+    public TurnoSalidaDto registrarTurno(TurnoEntradaDto turno) throws BadRequestException {
 
-        PacienteSalidaDto paciente = pacienteService.buscarPacientePorId(turnoEntradaDto.getPacienteId());
-        OdontologoSalidaDto odontologo = odontologoService.buscarOdontologoPorId(turnoEntradaDto.getOdontologoId());
+        OdontologoSalidaDto odontologo = odontologoService.buscarOdontologoPorId(turno.getOdontologoId());
+        PacienteSalidaDto paciente = pacienteService.buscarPacientePorId(turno.getPacienteId());
 
-        String pacienteNoEnBdd = "El paciente no se encuentra en nuestra base de datos";
-        String odontologoNoEnBdd = "El odontologo no se encuentra en nuestra base de datos";
-
-        if (paciente == null || odontologo == null) {
-            if (paciente == null && odontologo == null) {
-                LOGGER.error("El paciente y el odontologo no se encuentran en nuestra base de datos");
-                throw new BadRequestException("El paciente y el odontologo no se encuentran en nuestra base de datos");
-            } else if (paciente == null) {
-                LOGGER.error(pacienteNoEnBdd);
-                throw new BadRequestException(pacienteNoEnBdd);
-            } else {
-                LOGGER.error(odontologoNoEnBdd);
-                throw new BadRequestException(odontologoNoEnBdd);
-            }
-        } else {
-
-            Turno turnoNuevo = turnoRepository.save(modelMapper.map(turnoEntradaDto, Turno.class));
-            turnoSalidaDto = entidadADto(turnoNuevo);
-
-            LOGGER.info("Nuevo turno registrado con exito: {}", turnoSalidaDto);
+        if (odontologo == null && paciente == null) {
+            throw new BadRequestException("No se encuentra ni un odontólogo ni un paciente con los ID proporcionados.");
+        } else if (odontologo == null) {
+            throw new BadRequestException("No se encuentra un odontólogo con el ID proporcionado.");
+        } else if (paciente == null) {
+            throw new BadRequestException("No se encuentra un paciente con el ID proporcionado.");
         }
+
+        Turno turnoEntidad = modelMapper.map(turno, Turno.class);
+        LOGGER.info("Entidad: " + JsonPrinter.toString(turnoEntidad));
+
+
+        Turno turnoAPersistir = turnoRepository.save(turnoEntidad);
+        LOGGER.info("Turno a persistir: " + JsonPrinter.toString(turnoAPersistir));
+
+        TurnoSalidaDto turnoSalidaDto = modelMapper.map(turnoAPersistir, TurnoSalidaDto.class);
+        LOGGER.info("TurnoSalidaDto: " + JsonPrinter.toString(turnoSalidaDto));
+
+
+        turnoSalidaDto.setId(turno.getOdontologoId());
+        turnoSalidaDto.setId(turno.getPacienteId());
 
         return turnoSalidaDto;
     }
-
 
     private PacienteSalidaDto pacienteSalidaDtoASalidaTurnoDto(Long id) {
         return modelMapper.map(pacienteService.buscarPacientePorId(id), PacienteSalidaDto.class);

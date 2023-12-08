@@ -13,10 +13,10 @@ public class Turno {
 
     private LocalDateTime fechaYHora;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
