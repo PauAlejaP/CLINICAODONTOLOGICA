@@ -67,8 +67,8 @@ public class  TurnoService implements ITurnoService {
         LOGGER.info("TurnoSalidaDto: " + JsonPrinter.toString(turnoSalidaDto));
 
 
-        turnoSalidaDto.setId(turno.getOdontologoId());
-        turnoSalidaDto.setId(turno.getPacienteId());
+        turnoSalidaDto.setPacienteSalidaDto(turno.getPacienteId());
+        turnoSalidaDto.setOdontologoSalidaDto(turno.getOdontologoId());
 
         return turnoSalidaDto;
     }
@@ -83,8 +83,8 @@ public class  TurnoService implements ITurnoService {
 
     private TurnoSalidaDto entidadADto(Turno turno) {
         TurnoSalidaDto turnoSalidaDto = modelMapper.map(turno, TurnoSalidaDto.class);
-        turnoSalidaDto.setPacienteSalidaDto(pacienteSalidaDtoASalidaTurnoDto(turno.getPaciente().getId()));
-        turnoSalidaDto.setOdontologoSalidaDto(odontologoSalidaDtoASalidaTurnoDto(turno.getOdontologo().getId()));
+        turnoSalidaDto.setPacienteSalidaDto(pacienteSalidaDtoASalidaTurnoDto(turno.getPaciente().getId()).getId());
+        turnoSalidaDto.setOdontologoSalidaDto(odontologoSalidaDtoASalidaTurnoDto(turno.getOdontologo().getId()).getId());
         return turnoSalidaDto;
     }
 

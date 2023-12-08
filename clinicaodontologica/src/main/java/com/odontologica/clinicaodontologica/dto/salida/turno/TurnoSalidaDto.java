@@ -64,4 +64,9 @@ public class TurnoSalidaDto {
     }
 
 
+    public void setPacienteSalidaDto(Long pacienteId) {
+    }
+
+    public void setOdontologoSalidaDto(Long odontologoId) {
+    }
 }
