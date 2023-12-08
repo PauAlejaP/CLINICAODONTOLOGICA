@@ -43,8 +43,8 @@ public class TurnoController {
         return new ResponseEntity<>(turnoService.buscarTurnoPorId(id), HttpStatus.OK);
     }
 
-    @GetMapping()
-    public ResponseEntity<List<TurnoSalidaDto>> listarTurnos() {
+    @GetMapping("/listar")
+    public ResponseEntity<List<TurnoSalidaDto>> listarTurnos(){
         return new ResponseEntity<>(turnoService.listarTurnos(), HttpStatus.OK);
     }
 
