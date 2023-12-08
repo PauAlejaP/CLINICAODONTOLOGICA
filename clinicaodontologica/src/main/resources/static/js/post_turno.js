@@ -3,17 +3,17 @@ window.addEventListener('load', function () {
 
     const formulario = document.querySelector('#add_new_turno');
     const fechaYHora = document.querySelector('#fechaTurno');
-    const odontologo = document.querySelector('#odontologoId');
-    const paciente = document.querySelector('#pacienteId');
+    const odontologoId = document.querySelector('#odontologoId');
+    const pacienteId = document.querySelector('#pacienteId');
     const url = "http://localhost:8080";
 
     formulario.addEventListener('submit', function (event) {
         event.preventDefault()
 
         const payload = {
-            fechaYHora: fechaYHora.value.replace('T',' ')+":00",
-            odontologo: odontologo.value,
-            paciente: paciente.value,
+            fechaYHora: fechaYHora.value.replace('T',' '),
+            odontologo: odontologoId.value,
+            paciente: pacienteId.value,
         };
         console.log(fechaYHora);
         console.log(payload);
